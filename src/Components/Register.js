@@ -1,44 +1,40 @@
 // src/Components/Register.js
 import React, { useState } from 'react';
-import { auth } from '../firebase'; // Import auth từ file firebase.js
-import { createUserWithEmailAndPassword } from 'firebase/auth'; // Import hàm đăng ký
+import { auth } from '../firebase';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { useNavigate } from 'react-router-dom'; // THÊM DÒNG NÀY
 
 const Register = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
   const [successMessage, setSuccessMessage] = useState('');
+  const navigate = useNavigate(); // Khởi tạo hook useNavigate
 
   const handleRegister = async (event) => {
-    event.preventDefault(); // Ngăn form submit theo cách truyền thống
-    setError(null); // Reset lỗi cũ
-    setSuccessMessage(''); // Reset thông báo thành công cũ
+    event.preventDefault();
+    setError(null);
+    setSuccessMessage('');
 
-    // Kiểm tra mật khẩu đơn giản (Firebase cũng sẽ kiểm tra phía server)
     if (password.length < 6) {
       setError("Mật khẩu phải có ít nhất 6 ký tự.");
       return;
     }
 
     try {
-      // Gọi hàm của Firebase để tạo người dùng mới
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-      
-      // Đăng ký thành công
       console.log("Đăng ký thành công:", userCredential.user);
-      setSuccessMessage(`Tài khoản ${userCredential.user.email} đã được tạo thành công!`);
+      // setSuccessMessage(`Tài khoản ${userCredential.user.email} đã được tạo thành công! Vui lòng đăng nhập.`);
+      // Thay vì chỉ hiện thông báo, chúng ta sẽ chuyển hướng
       
-      // Xóa form sau khi đăng ký
       setEmail('');
       setPassword('');
 
-      // Tại đây bạn có thể làm thêm:
-      // - Tự động đăng nhập người dùng (Firebase đã làm điều này mặc định sau khi đăng ký thành công)
-      // - Chuyển hướng người dùng đến trang dashboard hoặc trang chủ
-      // - Gửi email xác thực (xem tài liệu Firebase để biết thêm)
+      // CHUYỂN HƯỚNG VỀ TRANG ĐĂNG NHẬP SAU KHI ĐĂNG KÝ THÀNH CÔNG
+      alert(`Tài khoản ${userCredential.user.email} đã được tạo thành công! Bạn sẽ được chuyển đến trang đăng nhập.`); // Thông báo nhanh
+      navigate('/login'); // << THÊM DÒNG NÀY
 
     } catch (err) {
-      // Xử lý lỗi từ Firebase
       console.error("Lỗi đăng ký:", err.code, err.message);
       if (err.code === 'auth/email-already-in-use') {
         setError("Địa chỉ email này đã được sử dụng. Vui lòng chọn email khác.");
@@ -56,6 +52,7 @@ const Register = () => {
     <div style={{ padding: '20px', maxWidth: '400px', margin: '20px auto', border: '1px solid #ddd', borderRadius: '8px' }}>
       <h2>Đăng Ký Tài Khoản Mới</h2>
       <form onSubmit={handleRegister}>
+        {/* Input fields (giữ nguyên) */}
         <div style={{ marginBottom: '15px' }}>
           <label htmlFor="register-email" style={{ display: 'block', marginBottom: '5px' }}>Email:</label>
           <input
@@ -80,8 +77,10 @@ const Register = () => {
             style={{ width: '100%', padding: '8px', boxSizing: 'border-box' }}
           />
         </div>
+
         {error && <p style={{ color: 'red', marginBottom: '10px' }}>{error}</p>}
-        {successMessage && <p style={{ color: 'green', marginBottom: '10px' }}>{successMessage}</p>}
+        {/* successMessage có thể không cần thiết nữa nếu chúng ta chuyển hướng ngay */}
+        {/* {successMessage && <p style={{ color: 'green', marginBottom: '10px' }}>{successMessage}</p>} */}
         <button 
           type="submit" 
           style={{ padding: '10px 15px', backgroundColor: '#007bff', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer' }}
