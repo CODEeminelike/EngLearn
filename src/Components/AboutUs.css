@@ -1,0 +1,133 @@
+.about-us {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Chia thành 2 cột bằng nhau */
+  grid-template-rows: auto auto;    /* 2 hàng, chiều cao tự động theo nội dung */
+  grid-template-areas:
+    "headline image"
+    "content stats";
+  gap: 20px;
+  padding: 50px;
+  background-color: #f8f8f8;
+  border-radius: 10px;
+  margin: 20px 0;
+  min-height: 80vh; /* Đặt chiều cao tối thiểu để thấy rõ layout 4 ô */
+}
+
+/* Áp dụng cho cả 4 ô để đảm bảo nội dung không tràn và căn chỉnh cơ bản */
+.about-us > div {
+  overflow: hidden; /* Ngăn nội dung tràn ra ngoài ô */
+  padding: 15px; /* Thêm chút padding bên trong mỗi ô */
+  display: flex;
+  flex-direction: column; /* Nội dung trong ô sẽ xếp chồng lên nhau */
+  justify-content: center; /* Căn giữa nội dung theo chiều dọc */
+}
+
+.headline-cell {
+  grid-area: headline;
+  display: flex; /* Ghi đè flex-direction để căn giữa text */
+  align-items: center; /* Căn giữa heading theo chiều dọc */
+  justify-content: flex-start; /* Căn heading về bên trái */
+}
+
+.image-cell {
+  grid-area: image;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #e0e0e0; /* Màu nền tạm để dễ thấy khu vực ảnh */
+  border-radius: 8px;
+}
+
+.content-cell {
+  grid-area: content;
+  justify-content: flex-start; /* Căn nội dung về phía trên */
+}
+
+.stats-cell {
+  grid-area: stats;
+  justify-content: center; /* Căn giữa các stats trong ô của nó */
+}
+
+.headline h2 {
+  font-size: 36px;
+  font-weight: bold;
+  color: #4a4a4a;
+  margin: 0; /* Bỏ margin mặc định của h2 */
+}
+
+.highlight {
+  color: #6c63ff; /* Purple color for highlighting */
+}
+
+.content p {
+  font-size: 18px;
+  color: #6a6a6a;
+  margin-top: 0; /* Bỏ margin top nếu không cần thiết sau khi đã có padding ở cell */
+  line-height: 1.6;
+  word-break: break-word; /* Để ngắt từ nếu quá dài */
+}
+
+.image-cell img {
+  max-width: 100%;   /* Ảnh sẽ không rộng hơn ô chứa nó */
+  max-height: 100%;  /* Ảnh sẽ không cao hơn ô chứa nó */
+  object-fit: contain; /* Hiển thị toàn bộ ảnh, có thể có khoảng trống */
+  border-radius: 8px; /* Bo góc cho ảnh nếu muốn */
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 cột cho các stats */
+  gap: 20px; /* Tăng khoảng cách cho dễ nhìn */
+  width: 100%; /* Đảm bảo .stats chiếm toàn bộ chiều rộng của .stats-cell */
+}
+
+.stat {
+  text-align: center;
+  background-color: #ffffff; /* Thêm nền cho từng stat để nổi bật hơn */
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.stat h3 {
+  font-size: 32px;
+  font-weight: bold;
+  color: #6c63ff;
+  margin: 0 0 5px 0; /* Điều chỉnh margin */
+}
+
+.stat p {
+  font-size: 16px;
+  color: #6a6a6a;
+  margin: 0;
+}
+
+/* Responsive adjustments (Tùy chọn, bạn có thể mở rộng phần này) */
+@media (max-width: 768px) {
+  .about-us {
+    grid-template-columns: 1fr; /* Chuyển thành 1 cột trên màn hình nhỏ */
+    grid-template-rows: auto auto auto auto; /* 4 hàng */
+    grid-template-areas:
+      "headline"
+      "image"
+      "content"
+      "stats";
+    padding: 20px;
+  }
+
+  .headline h2 {
+    font-size: 28px;
+  }
+
+  .content p {
+    font-size: 16px;
+  }
+
+  .stat h3 {
+    font-size: 28px;
+  }
+
+  .stat p {
+    font-size: 14px;
+  }
+}

@@ -1,0 +1,57 @@
+/* src/Components/Header.css */
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px; /* Padding này sẽ ảnh hưởng đến tổng chiều cao */
+  background-color: white;
+  border-bottom: 1px solid #ddd; /* Border này cũng cộng thêm 1px vào chiều cao */
+
+  /* --- THÊM CÁC THUỘC TÍNH SAU ĐỂ FIX HEADER --- */
+  position: fixed; /* Quan trọng: Giữ header cố định trên màn hình */
+  top: 0;          /* Đặt header ở mép trên cùng */
+  left: 0;         /* Đặt header ở mép trái cùng */
+  width: 100%;     /* Cho header chiếm toàn bộ chiều rộng */
+  z-index: 1000;   /* Đảm bảo header luôn nổi lên trên các phần tử khác */
+  box-sizing: border-box; /* Đảm bảo padding và border không làm tăng kích thước vượt quá width 100% */
+  /* --------------------------------------------- */
+}
+
+.logo {
+  font-size: 20px; /* Chiều cao của logo cũng ảnh hưởng đến tổng chiều cao header */
+  font-weight: bold;
+  color: blue;
+}
+
+.nav ul {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+  padding: 0; /* Bỏ padding mặc định của ul */
+  margin: 0;  /* Bỏ margin mặc định của ul */
+}
+
+.nav a {
+  text-decoration: none;
+  color: gray;
+  font-size: 16px; /* Chiều cao của text nav cũng ảnh hưởng */
+}
+
+.nav a:hover {
+  color: black;
+}
+
+.buy-now {
+  padding: 10px 20px; /* Padding của button cũng ảnh hưởng */
+  background-color: blue;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px; /* Font size của button cũng ảnh hưởng */
+}
+
+.buy-now:hover {
+  background-color: darkblue;
+}

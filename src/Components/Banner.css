@@ -1,0 +1,101 @@
+/* src/Components/Banner.css */
+
+.banner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 50px; /* Padding này sẽ nằm bên trong banner */
+  background-color: #f8f8f8;
+  /* border-radius: 10px; */ /* Có thể bạn muốn bỏ border-radius nếu banner chiếm full màn hình */
+  /* box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1); */ /* Tương tự, box-shadow có thể không cần thiết */
+  /* margin: 20px 0; */ /* Bỏ margin này để banner sát với header và phần tử tiếp theo */
+  margin: 0; /* Loại bỏ margin trên và dưới */
+
+  /* --- CÀI ĐẶT CHO BANNER FULL MÀN HÌNH (TRỪ ĐI CHIỀU CAO HEADER) --- */
+  /* Thay thế 75px bằng chiều cao thực tế của Header cố định của bạn */
+  min-height: calc(100vh - 75px);
+  /* Nếu bạn muốn chiều cao cố định và không cho banner lớn hơn dù nội dung nhiều: */
+  /* height: calc(100vh - 75px); */
+  
+  width: 100%; /* Đảm bảo banner chiếm toàn bộ chiều rộng có sẵn */
+  box-sizing: border-box; /* Quan trọng: để padding không cộng thêm vào chiều cao/chiều rộng đã tính toán */
+  /* ----------------------------------------------------------------- */
+}
+
+.banner-content {
+  width: 50%;
+  /* Nếu muốn nội dung trong banner-content cũng được căn giữa theo chiều dọc, 
+     và .banner là flex container, bạn có thể không cần thêm gì ở đây, 
+     hoặc tùy chỉnh thêm nếu .banner-content có nhiều dòng text. */
+}
+
+/* Giữ nguyên các style khác của bạn */
+h2 { /* Các style này áp dụng cho h2 bên trong .banner */
+  font-size: 36px;
+  font-weight: bold;
+  color: #4a4a4a;
+}
+
+.highlight {
+  color: #6c63ff; /* Purple color for highlighting */
+}
+
+p { /* Các style này áp dụng cho p bên trong .banner */
+  margin: 20px 0;
+  font-size: 18px;
+  color: #6a6a6a;
+}
+
+.banner-buttons {
+  display: flex;
+  gap: 20px;
+}
+
+.get-started, .explore-courses {
+  padding: 12px 20px;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.get-started {
+  background-color: #6c63ff;
+  color: white;
+}
+
+.get-started:hover {
+  background-color: #5a52cc;
+}
+
+.explore-courses {
+  background-color: transparent;
+  border: 2px solid #6c63ff;
+  color: #6c63ff;
+}
+
+.explore-courses:hover {
+  background-color: #6c63ff;
+  color: white;
+}
+
+.banner-image { /* Thêm class này nếu chưa có trong HTML để chứa ảnh */
+  width: 50%; /* Hoặc tỷ lệ bạn muốn cho vùng chứa ảnh */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.banner-image img {
+  /* width: 75%; */ /* Bị ghi đè bởi style bên dưới */
+  width: 95%; /* Style này sẽ được áp dụng. Đây là 95% của .banner-image */
+  max-height: 100%; /* Đảm bảo ảnh không vượt quá chiều cao của vùng .banner-image */
+  border-radius: 10px;
+  object-fit: contain; /* 'contain' sẽ giữ tỷ lệ ảnh và hiển thị toàn bộ ảnh bên trong không gian của nó. 
+                           Nếu muốn ảnh lấp đầy và chấp nhận cắt xén, dùng 'cover'. */
+}
+
+/* CSS cuối cùng cho .banner-image img sẽ là width: 95%; 
+   Bạn có hai khai báo width cho .banner-image img, trình duyệt sẽ dùng cái cuối cùng.
+   Hãy giữ lại một cái phù hợp với ý bạn.
+*/
