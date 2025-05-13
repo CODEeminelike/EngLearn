@@ -1,8 +1,8 @@
 // src/Components/Header.js
 import React from "react";
 import "./Header.css";
-import { useAuth } from "../contexts/AuthContext"; // Đã import ở bước trước
-import { useNavigate, Link } from "react-router-dom"; // Đã import ở bước trước
+import { useAuth } from "../contexts/AuthContext";
+import { useNavigate, Link } from "react-router-dom";
 
 const Header = () => {
   const { currentUser } = useAuth();
@@ -10,11 +10,9 @@ const Header = () => {
 
   const handleJoinNowClick = () => {
     if (currentUser) {
-      // Nếu đã đăng nhập, chuyển đến Student Dashboard
       navigate("/student-dashboard");
     } else {
-      // Nếu CHƯA đăng nhập, chuyển đến trang ĐĂNG NHẬP
-      navigate("/login"); // << THAY ĐỔI Ở ĐÂY (từ /register sang /login)
+      navigate("/login");
     }
   };
 
@@ -24,7 +22,8 @@ const Header = () => {
       <nav className="nav">
         <ul>
           <li><Link to="/">Home</Link></li>
-          <li><Link to="/about-us">About Us</Link></li>
+          {/* THAY ĐỔI DÒNG DƯỚI ĐÂY */}
+          <li><Link to="/#about-us-section">About Us</Link></li>
           <li><Link to="/contact">Contact</Link></li>
           <li><Link to="/documentation">Documentation</Link></li>
         </ul>

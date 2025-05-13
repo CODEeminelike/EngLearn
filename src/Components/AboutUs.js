@@ -1,11 +1,25 @@
+// src/Components/AboutUs.js
 import React from "react";
 import "./AboutUs.css";
 import aboutImage from "../assets/about-us-image.jpg"; // Đảm bảo đường dẫn này đúng
 
 const AboutUs = () => {
+  // ... (code hiện tại của bạn trong useInView, nếu có)
+
   return (
-    <section className="about-us">
-      <div className="headline-cell">
+    <section 
+      id="about-us-section" // << THÊM ID VÀO ĐÂY
+      className="about-us"
+      // ref={sectionRef} // Nếu bạn có ref từ useInView cho animation, giữ nguyên
+    >
+      {/* Toàn bộ nội dung hiện tại của component AboutUs */}
+      <div
+        // ref={headlineRef} // ví dụ ref cho animation
+        className={`headline-cell cell-animation ${
+          // headlineIsVisible ? "is-visible" : "" // ví dụ class cho animation
+          "" // Bỏ trống nếu không có animation hoặc giữ nguyên logic animation của bạn
+        }`}
+      >
         <div className="headline">
           <h2>
             Our Dream is{" "}
@@ -14,11 +28,24 @@ const AboutUs = () => {
         </div>
       </div>
 
-      <div className="image-cell">
+      {/* Các ô khác tương tự */}
+      <div 
+        // ref={imageRef}
+        className={`image-cell cell-animation ${
+          // imageIsVisible ? "is-visible" : ""
+          ""
+        }`}
+      >
         <img src={aboutImage} alt="About Us" />
       </div>
 
-      <div className="content-cell">
+      <div 
+        // ref={contentRef}
+        className={`content-cell cell-animation ${
+          // contentIsVisible ? "is-visible" : ""
+          ""
+        }`}
+      >
         <div className="content">
           <p>
             Kawruh was founded by Robert Anderson, a passionate lifelong
@@ -33,7 +60,13 @@ const AboutUs = () => {
         </div>
       </div>
 
-      <div className="stats-cell">
+      <div 
+        // ref={statsRef}
+        className={`stats-cell cell-animation ${
+          // statsAreVisible ? "is-visible" : ""
+          ""
+        }`}
+      >
         <div className="stats">
           <div className="stat">
             <h3>3.5</h3>
