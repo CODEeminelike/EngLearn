@@ -1,0 +1,71 @@
+.learn-lesson {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h2,
+h3 {
+  color: #333;
+}
+
+.reading-content {
+  margin-bottom: 20px;
+}
+
+.question {
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  padding: 15px;
+  border-radius: 4px;
+}
+
+.option {
+  margin: 10px 0;
+}
+
+.option input {
+  margin-right: 10px;
+}
+
+.hint-button {
+  background-color: #28a745;
+  padding: 5px 10px;
+  margin-top: 10px;
+}
+
+.hint-button:hover {
+  background-color: #218838;
+}
+
+.hint {
+  color: #555;
+  margin-top: 10px;
+}
+
+button[type="submit"] {
+  background-color: #007bff;
+  padding: 10px 20px;
+}
+
+button[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+.result {
+  text-align: center;
+}
+
+.result button {
+  background-color: #007bff;
+  padding: 10px 20px;
+}
+
+.result button:hover {
+  background-color: #0056b3;
+}
+
+.error {
+  color: red;
+  margin-bottom: 10px;
+}

@@ -1,0 +1,37 @@
+.submission-history {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h3 {
+  color: #333;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+.submission-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border: 1px solid #ddd;
+  margin-bottom: 10px;
+  border-radius: 4px;
+}
+
+.submission-item a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.submission-item a:hover {
+  text-decoration: underline;
+}
+
+.error {
+  color: red;
+}
