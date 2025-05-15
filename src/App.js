@@ -22,7 +22,7 @@ const HomePage = () => (
   </>
 );
 
-// Component bảo vệ route, yêu cầu đăng nhập và quyền admin nếu cần
+// Component bảo vệ route, yêu cầu đăng nhập và quyền admin nếu cần ///////////
 function ProtectedRoute({ children, requireAdmin = false }) {
   const { currentUser, isAdmin } = useAuth();
   if (!currentUser) {
