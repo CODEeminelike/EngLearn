@@ -1,0 +1,110 @@
+.create-lesson {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h2,
+h3,
+h4,
+h5 {
+  color: #333;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+textarea {
+  resize: vertical;
+}
+
+button {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+.error {
+  color: red;
+  margin-bottom: 10px;
+}
+
+.success {
+  color: green;
+  margin-bottom: 10px;
+}
+
+.question-form {
+  border: 1px solid #eee;
+  padding: 15px;
+  margin-bottom: 20px;
+}
+
+.questions-list {
+  margin-top: 20px;
+}
+
+.question-item {
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+}
+
+.question-display {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.question-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.edit-button {
+  background-color: #ffc107;
+  padding: 5px 10px;
+}
+
+.edit-button:hover {
+  background-color: #e0a800;
+}
+
+.delete-button {
+  background-color: #dc3545;
+  padding: 5px 10px;
+}
+
+.delete-button:hover {
+  background-color: #c82333;
+}
+
+.edit-question-form {
+  border: 1px solid #ccc;
+  padding: 15px;
+  border-radius: 4px;
+}

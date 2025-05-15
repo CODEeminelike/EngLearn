@@ -1,7 +1,7 @@
 // src/contexts/AuthContext.js
-import React, { createContext, useContext, useEffect, useState } from 'react';
-import { auth } from '../firebase'; // Import auth từ file firebase.js của bạn
-import { onAuthStateChanged } from 'firebase/auth';
+import React, { createContext, useContext, useState, useEffect } from "react";
+import { auth } from "../firebase";
+import { onAuthStateChanged } from "firebase/auth";
 
 const AuthContext = createContext();
 
@@ -11,26 +11,24 @@ export function useAuth() {
 
 export function AuthProvider({ children }) {
   const [currentUser, setCurrentUser] = useState(null);
-  const [loading, setLoading] = useState(true); // Trạng thái chờ kiểm tra auth ban đầu
+  const [isAdmin, setIsAdmin] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Lắng nghe sự thay đổi trạng thái đăng nhập từ Firebase
-    const unsubscribe = onAuthStateChanged(auth, user => {
-      setCurrentUser(user); // user sẽ là null nếu chưa đăng nhập, hoặc là object user nếu đã đăng nhập
-      setLoading(false); // Kết thúc trạng thái chờ
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      setCurrentUser(user);
+      // Kiểm tra nếu user có email là holekhanhlinh209@gmail.com
+      setIsAdmin(user && user.email === "holekhanhlinh209@gmail.com");
+      setLoading(false);
     });
-
-    // Cleanup subscription khi component unmount
     return unsubscribe;
   }, []);
 
   const value = {
     currentUser,
-    loading
-    // Bạn có thể thêm các hàm login, logout, register vào đây để quản lý tập trung
+    isAdmin,
   };
 
-  // Chỉ render children khi không còn ở trạng thái loading (đã kiểm tra auth xong)
   return (
     <AuthContext.Provider value={value}>
       {!loading && children}
